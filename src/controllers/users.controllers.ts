@@ -3,10 +3,7 @@ import { createUsService } from "../services/users/createUs.services";
 import { getUsersService } from "../services/users/getUsers.services";
 
 import { instanceToPlain } from "class-transformer";
-import {
-  IUserUpdateRequest,
-  IUserRequest,
-} from "../interfaces/users.interfaces";
+import { IUserRequest } from "../interfaces/users/users.interfaces";
 import deleteUserService from "../services/users/delUser.services";
 import { updService } from "../services/users/updtUser.services";
 import { AppError } from "../errors/appErrors";
@@ -30,26 +27,11 @@ export const delUserController = async (req: Request, res: Response) => {
   return res.status(204).send({ message: "isActive = false" });
 };
 
-// export const updateUserController = async (req: Request, res: Response) => {
-//   const user: IUserUpdateRequest = req.body;
-
-//   const id: string = req.params.id;
-//   const updatedUser = await updService(user, id);
-
-//   return res.json(updatedUser);
-// };
-
 export const updateUserController = async (req: Request, res: Response) => {
-  const user = req.user;
-
   const userData = req.body;
 
   const id = req.params.id;
 
-  if (user.id !== id && !user.isAdm) {
-    throw new AppError("Not authorized", 401);
-  }
-
   const updatedUser = await updService(id, userData);
-  return res.status(200).json(updatedUser);
+  return res.json({ message: "user updated", ...instanceToPlain(updatedUser) });
 };

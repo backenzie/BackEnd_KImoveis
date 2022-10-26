@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entity";
-import { IUserRequest } from "../../interfaces/users.interfaces";
+import { IUserRequest } from "../../interfaces/users/users.interfaces";
 import { hashSync } from "bcrypt";
 import { AppError } from "../../errors/appErrors";
 

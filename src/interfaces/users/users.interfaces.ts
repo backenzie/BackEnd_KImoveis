@@ -23,3 +23,9 @@ export interface IUserResponseGet {
   isAdm: boolean;
   id: string;
 }
+
+export interface IUserToken {
+  isAdm: boolean;
+  isActive: boolean;
+  id: string;
+}

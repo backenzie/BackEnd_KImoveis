@@ -5,7 +5,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from "typeorm";
+import { schedules } from "./usersProperties.entity";
 
 @Entity("users")
 class User {
@@ -33,6 +35,9 @@ class User {
   @Column({ length: 120 })
   @Exclude()
   password: string;
+
+  @OneToMany(() => schedules, (usersProperties) => usersProperties.user)
+  userProperties: schedules[];
 }
 
 export { User };

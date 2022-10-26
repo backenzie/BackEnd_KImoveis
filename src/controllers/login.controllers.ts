@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ISessionRequest } from "../interfaces/login.interfaces";
+import { ISessionRequest } from "../interfaces/users/login.interfaces";
 import { createLoginService } from "../services/login/createLgin.services";
 
 export const createLoginController = async (req: Request, res: Response) => {

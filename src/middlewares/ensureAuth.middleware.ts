@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { decode } from "jsonwebtoken";
 import "dotenv/config";
 
 export const ensureAuthMiddleware = async (
@@ -27,6 +27,7 @@ export const ensureAuthMiddleware = async (
     req.user = {
       isAdm: decoded.isAdm,
       id: decoded.sub,
+      isActive: decoded.isActive,
     };
 
     return next();

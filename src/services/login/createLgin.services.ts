@@ -1,5 +1,5 @@
 import { User } from "../../entities/user.entity";
-import { ISessionRequest } from "../../interfaces/login.interfaces";
+import { ISessionRequest } from "../../interfaces/users/login.interfaces";
 import { compare } from "bcrypt";
 import { AppError } from "../../errors/appErrors";
 import AppDataSource from "../../data-source";
